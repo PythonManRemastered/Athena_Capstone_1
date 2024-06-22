@@ -19,7 +19,7 @@ if "year_pass_clicked" not in st.session_state:
 
 st.title("Ceramic Cup Manufacturing Company Setup")
 
-st.subheader("What are we tackling in this article?")
+st.subheader("What are we tackling in this cool article?")
 project_intro = """
 - Carbon credits are an incentive to decrease carbon emissions by allowing companies to buy 'credits' which allow for a certain amount of carbon emissions.
 - Instead of completely halting all carbon emissions, this allows for maximums and quotas to be set for companies and organizations.
