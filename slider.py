@@ -9,6 +9,7 @@ tree_age = 0
 tree_diameter = 2
 tree_height = 2
 basic = 0
+money_spent = 0
 # Initialize session state variables
 if "begin_clicked" not in st.session_state:
     st.session_state["begin_clicked"] = False
@@ -19,8 +20,17 @@ if "year_pass_clicked" not in st.session_state:
 
 st.title("Ceramic Cup Manufacturing Company Setup")
 
+st.subheader("What are we tackling in this cool article?")
+project_intro = """
+- Carbon credits are an incentive to decrease carbon emissions by allowing companies to buy 'credits' which allow for a certain amount of carbon emissions.
+- Instead of completely halting all carbon emissions, this allows for maximums and quotas to be set for companies and organizations.
+- Carbon sequestration is how you compensate for your carbon emissions.
+- You can do this in many ways, from planting trees to adopting more sustainable manufacturing practices.
+- In this segment of my project, we will help you understand the problem surrounding seemingly simple concepts like this.
+"""
+
 header = st.container()
-header.title("Here is a sticky header")
+header.title(f"How much have we spent: {money_spent}")
 header.write("""<div class='fixed-header'/>""", unsafe_allow_html=True)
 
 st.markdown(
@@ -39,15 +49,6 @@ st.markdown(
     """,
     unsafe_allow_html=True)
 
-
-st.subheader("What are we tackling in this cool article?")
-project_intro = """
-- Carbon credits are an incentive to decrease carbon emissions by allowing companies to buy 'credits' which allow for a certain amount of carbon emissions.
-- Instead of completely halting all carbon emissions, this allows for maximums and quotas to be set for companies and organizations.
-- Carbon sequestration is simply how you compensate for your carbon emissions.
-- There are many ways you can do this, from planting trees to adopting more sustainable manufacturing practices.
-- In this segment of my project, we will help you understand the problem surrounding seemingly simple concepts like this.
-"""
 st.markdown(project_intro)
 st.caption("Note: Remember, you can hover over any of the terms in this article to see what they mean and where they've come from")
 
