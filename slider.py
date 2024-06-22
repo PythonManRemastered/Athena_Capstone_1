@@ -37,7 +37,7 @@ st.markdown(
     }
 </style>
     """,
-    unsafe_allow_html=True
+    unsafe_allow_html=True)
 
 
 st.subheader("What are we tackling in this cool article?")
