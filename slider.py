@@ -18,6 +18,8 @@ if "year_pass_clicked" not in st.session_state:
     st.session_state["year_pass_clicked"] = False
 
 st.title("Ceramic Cup Manufacturing Company Setup")
+header.write("""<div class='fixed-header'/>""", unsafe_allow_html=True)
+
 
 st.subheader("What are we tackling in this cool article?")
 project_intro = """
