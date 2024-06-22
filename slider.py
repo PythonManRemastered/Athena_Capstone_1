@@ -21,7 +21,7 @@ st.title("Ceramic Cup Manufacturing Company Setup")
 
 header = st.container()
 header.title("Here is a sticky header")
-header.write("""<div class='fixed-header'/>""", unsafe_allow_html=True)
+header.write(""<div class='fixed-header'/>"", unsafe_allow_html=True)
 
 
 st.subheader("What are we tackling in this cool article?")
