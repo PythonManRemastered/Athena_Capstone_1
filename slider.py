@@ -4,12 +4,12 @@ import time
 countries = ["Zambia", "Zimbabwe", "South Africa", "Russia"]
 species = ["Apple", "Oak", "Yellow Birch", "Chestnut"]
 tree_weight = 0
-tree_age = 0
+tree_age = 1
 # the following are constant variables, idk the data on avg diameter of each tree species
 tree_diameter = 2
 tree_height = 2
 basic = 0
-money_spent = 0
+money_spent = tree_number * 20 * 1.05 * tree_age
 # Initialize session state variables
 if "begin_clicked" not in st.session_state:
     st.session_state["begin_clicked"] = False
@@ -68,14 +68,19 @@ if st.session_state["begin_clicked"] and st.session_state["confirm_clicked"]:
     # real number statistics, don't change unles species change
     if selected_species == "Oak":
         tree_weight = 41
+        
     elif selected_species == "Apple":
         tree_weight = 30
+        
     elif selected_species == "Yellow Birch":
         tree_weight = 31
+        
     else:
         tree_weight = 30
+        
     
     tree_number = st.slider("Choose how many trees you want to plant", 0, 1000)
+
     st.write(f"You chose to plant {tree_number} {selected_species} trees. Each tree weighs approximately {tree_weight} kgs")
      
     tree_age = tree_age + 1
@@ -105,6 +110,7 @@ if st.session_state["begin_clicked"] and st.session_state["confirm_clicked"]:
             st.write(f"Last year, you chose to plant {tree_number} {selected_species} trees.")
             tree_age += 1
             carbon_sequestered_original += (tree_age*tree_number*20)/100
+            
             st.write(f"Carbon sequestered in the second year: {carbon_sequestered_original} kgs")
         
             st.write("Notice how the number didn't just double over the last year?")
