@@ -31,10 +31,10 @@ project_intro = """
 """
 
 header = st.container()
-header.title(f"How much have we spent: {money_spent}")
 header.write("""
-<div style="position: fixed; top: 0; right: 0; background-color: #f0f0f0; padding: 100px;">
-    Your fixed header content here
+<div style="position: fixed; top: 0; right: 0; background-color: #050505; padding: 100px;">
+    Refer to this to figure how much money you've spent:
+    ${money_Spent}
 </div>
 """, unsafe_allow_html=True)
 
