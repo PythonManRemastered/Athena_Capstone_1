@@ -4,7 +4,8 @@ import time
 countries = ["Zambia", "Zimbabwe", "South Africa", "Russia"]
 species = ["Apple", "Oak", "Yellow Birch", "Chestnut"]
 tree_weight = 0
-tree_age = 1
+tree_age = 0
+tree_number = 0
 # the following are constant variables, idk the data on avg diameter of each tree species
 tree_diameter = 2
 tree_height = 2
