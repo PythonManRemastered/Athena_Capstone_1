@@ -33,8 +33,8 @@ project_intro = """
 header = st.container()
 header.write("""
 <div style="position: fixed; top: 100; right: 100; background-color: #0e1117; padding: 60px;">
-    Refer to this to figure out how much money you've spent:
-    <p>{}</p>
+    <p>You've spent</p>
+    <h>${}</h>
 </div>
 """.format(money_spent), unsafe_allow_html=True)
 
