@@ -6,11 +6,11 @@ species = ["Apple", "Oak", "Yellow Birch", "Chestnut"]
 tree_weight = 0
 tree_age = 0
 tree_number = 0
-# the following are constant variables, idk the data on avg diameter of each tree species
+# the following are constant variables, the data on avg diameter of each tree species not collected yet
 tree_diameter = 2
 tree_height = 2
 basic = 0
-money_spent = tree_number * 20 * 1.05 * tree_age
+money_spent = 100
 # Initialize session state variables
 if "begin_clicked" not in st.session_state:
     st.session_state["begin_clicked"] = False
