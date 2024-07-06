@@ -10,7 +10,7 @@ tree_number = 0
 tree_diameter = 2
 tree_height = 2
 basic = 0
-money_spent = 100
+money_spent = (tree_number * 20) + (1.05 * tree_age)
 # Initialize session state variables
 if "begin_clicked" not in st.session_state:
     st.session_state["begin_clicked"] = False
@@ -32,7 +32,7 @@ project_intro = """
 
 header = st.container()
 header.title(f"How much have we spent: {money_spent}")
-header.write("""<div class='fixed-header'/>""", unsafe_allow_html=True)
+header.write("""<div class='fixed-subheader'/>""", unsafe_allow_html=True)
 
 st.markdown(
     """
@@ -131,5 +131,4 @@ if st.session_state["begin_clicked"] and st.session_state["confirm_clicked"] and
     carbon_lost = carbon_sequestered_original-carbon_after_deforestration
     if st.button("Click me to confirm your choice"):
         st.write(f"We lost {tree_number_lost} trees")
-        money_spent = 100
         st.write(f"Because of this, about {carbon_lost} kgs of the carbon we sequestered is now back into the atmosphere")
