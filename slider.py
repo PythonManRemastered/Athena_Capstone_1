@@ -23,7 +23,7 @@ st.title("Ceramic Cup Manufacturing Company Setup")
 
 st.subheader("What are we tackling in this cool article?")
 project_intro = """
-- Carbon credits are an incentive to decrease carbon emissions by allowing companies to buy 'credits' which allow for a certain amount of carbon emissions.
+- Carbon credits are an incentive to decrease carbon emissions by allowing companies to buy 'credits' that allow for a certain amount of carbon emissions.
 - Instead of completely halting all carbon emissions, this allows for maximums and quotas to be set for companies and organizations.
 - Carbon sequestration is how you compensate for your carbon emissions.
 - You can do this in many ways, from planting trees to adopting more sustainable manufacturing practices.
@@ -55,7 +55,7 @@ if st.session_state["begin_clicked"]:
 # Species selection and tree planting
 if st.session_state["begin_clicked"] and st.session_state["confirm_clicked"]:
     selected_species = st.selectbox("Choose the species of tree you want to plant:", species)
-    # real number statistics, don't change unles species change
+    # real number statistics, don't change unless species change
     if selected_species == "Oak":
         tree_weight = 41
         
@@ -70,8 +70,6 @@ if st.session_state["begin_clicked"] and st.session_state["confirm_clicked"]:
         
     
     tree_number = st.slider("Choose how many trees you want to plant", 0, 1000)
-    money_spent = tree_number * 20
-    st.write(money_spent)
 
     st.write(f"You chose to plant {tree_number} {selected_species} trees. Each tree weighs approximately {tree_weight} kgs")
      
@@ -83,7 +81,7 @@ if st.session_state["begin_clicked"] and st.session_state["confirm_clicked"]:
     else:
         st.write(f"Not yet! We still need to sequester {1000 - int(carbon_sequestered_original)} kgs more!")
     
-  # simulate time passing  
+  # Simulate time passing  
     if st.button("Pass a Year"):
         st.session_state["year_pass_clicked"] = True
         progress_text = "Simulating one entire year passing..."
