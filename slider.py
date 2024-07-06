@@ -33,7 +33,7 @@ project_intro = """
 header = st.container()
 header.title(f"How much have we spent: {money_spent}")
 header.write("""
-<div style="position: absolute; top: 0; right: 0;">
+<div style="position: absolute; top: 1000; right: 10290;">
     <div class='fixed-header'></div>
 </div>
 """, unsafe_allow_html=True)
