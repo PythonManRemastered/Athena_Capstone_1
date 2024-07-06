@@ -39,22 +39,6 @@ header.write("""
 """.format(money_spent), unsafe_allow_html=True)
 
 
-st.markdown(
-    """
-<style>
-    div[data-testid="stVerticalBlock"] div:has(div.fixed-header) {
-        position: sticky;
-        top: 2.875rem;
-        background-color: None;
-        z-index: 999;
-    }
-    .fixed-header {
-        border-bottom: 0px solid black;
-    }
-</style>
-    """,
-    unsafe_allow_html=True)
-
 st.markdown(project_intro)
 st.caption("Note: Remember, you can hover over any of the terms in this article to see what they mean and where they've come from")
 
