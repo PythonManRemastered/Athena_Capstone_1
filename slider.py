@@ -45,7 +45,6 @@ st.caption("Note: Remember, you can hover over any of the terms in this article 
 # Start button to begin the application
 if st.button("Click me to begin"):
     st.session_state["begin_clicked"] = True
-    money_spent = 200
 
 # Country selection and confirmation
 if st.session_state["begin_clicked"]:
@@ -71,6 +70,8 @@ if st.session_state["begin_clicked"] and st.session_state["confirm_clicked"]:
         
     
     tree_number = st.slider("Choose how many trees you want to plant", 0, 1000)
+    money_spent = tree_number * 20
+    st.write(money_spent)
 
     st.write(f"You chose to plant {tree_number} {selected_species} trees. Each tree weighs approximately {tree_weight} kgs")
      
