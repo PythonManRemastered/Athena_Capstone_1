@@ -61,6 +61,7 @@ st.caption("Note: Remember, you can hover over any of the terms in this article 
 # Start button to begin the application
 if st.button("Click me to begin"):
     st.session_state["begin_clicked"] = True
+    money_spent = 200
 
 # Country selection and confirmation
 if st.session_state["begin_clicked"]:
