@@ -32,7 +32,7 @@ project_intro = """
 
 header = st.container()
 header.write("""
-<div style="position: fixed; top: 0; right: 0; background-color: #0e1117; padding: 10px;">
+<div style="position: fixed; top: 0; right: 0; background-color: #0e1117; padding: 60px;">
     Refer to this to figure out how much money you've spent:
     <p>{}</p>
 </div>
