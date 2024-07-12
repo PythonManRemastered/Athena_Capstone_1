@@ -85,7 +85,7 @@ if st.session_state["begin_clicked"] and st.session_state["confirm_clicked"]:
     # .get prevents key issues, 30 is the default value for non-recognizable species
     tree_weight = tree_weights.get(selected_species, 30)
     
-    tree_number = st.slider("Choose how many trees you want to plant", 0, 1000)
+    tree_number = st.slider("Choose how many trees you want to plant", 0, 20000)
     update_tree_number(tree_number)
     
     st.write(f"You chose to plant {tree_number} {selected_species} trees. Each tree weighs approximately {tree_weight} kgs")
