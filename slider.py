@@ -66,7 +66,6 @@ display_header()
 if st.button("Click me if you want to start over"):
     restarter_text = "Restarting article..."
     my_bar = st.progress(0, text=restarter_text)
-    st.header("Restarting article")
     for percent_complete in range(100):
         time.sleep(0.01)
         my_bar.progress(percent_complete + 1, text=restarter_text)
