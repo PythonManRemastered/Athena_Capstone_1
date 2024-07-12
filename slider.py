@@ -7,6 +7,7 @@ species = ["Apple", "Oak", "Yellow Birch", "Chestnut"]
 tree_height = 1
 tree_diameter = 1
 tree_age = 1
+cup_amount = 0 
 # height and diameter is in unit measurement
 
 # Initialize session state variables
@@ -30,6 +31,9 @@ def update_money_spent(amount):
 def update_tree_number(number):
     st.session_state.tree_number = number
 
+def update_cup_number(number):
+    st.session_state.cup_amount = number
+
 # Main app UI
 
 st.header("What are we tackling in this cool article?")
@@ -40,6 +44,11 @@ project_intro = """
 - You can do this in many ways, from planting trees to adopting more sustainable manufacturing practices.
 - In this segment of my project, we will help you understand the problem surrounding seemingly simple concepts like this.
 """
+company_intro = """
+- You've been tasked with heading a medium-scale ceramic cup manufacturing facility's daily operations
+- You are looking through your paperwork and realise that you have exceeded the amount of carbon that you are allowed to emit
+- According to the manufacturing documents, you emitted approximately 2 kilograms of CO2 per cup, and about 8 kilograms of CO2 through the entire product development life cycle
+"""
 
 country_overviews_dictionary = {
     "South Africa": "The South African Provincial area is known for heavy acts of deforestation. Though this makes our job a lot harder, we can still try!",
@@ -48,7 +57,7 @@ country_overviews_dictionary = {
     "Russia": "Due to the current conflict in the Russian peninsula, co-ordinating forestation politically may prove to be a problem. Doesn't matter: Let's try!"
 
 }
-
+st.markdown(country_overviews_dictionary)
 # Display header with updated money spent
 def display_header():
     st.markdown(f"""
@@ -90,6 +99,7 @@ st.caption("Note: Remember, you can hover over any of the terms in this article 
 if st.button("Click me to begin"):
     st.session_state["begin_clicked"] = True
     st.title("Ceramic Cup Manufacturing Company Setup")
+    st.write
 
 # Country selection and confirmation
 if st.session_state["begin_clicked"]:
