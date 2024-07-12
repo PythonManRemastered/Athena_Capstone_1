@@ -34,6 +34,7 @@ def update_tree_age(age):
 
 if st.button("Spend 100 buckaroos"):
     update_money_spent(100)
+    st.write(money_spent)
 
 st.title("Ceramic Cup Manufacturing Company Setup")
 
