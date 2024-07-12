@@ -16,7 +16,7 @@ if "begin_clicked" not in st.session_state:
 if "confirm_clicked" not in st.session_state:
     st.session_state["confirm_clicked"] = False
 if "product_choice_confirm" not in st.session_state:
-    st.session_state["product_choice_confirmed"] = False
+    st.session_state["product_choice_confirm"] = False
 if "year_pass_clicked" not in st.session_state:
     st.session_state["year_pass_clicked"] = False
 if "chapter_two_advance" not in st.session_state:
@@ -104,6 +104,7 @@ if st.session_state["begin_clicked"] and st.session_state["product_choice_confir
             st.write(f"Perfect! Under new regulations in {selected_country}, you've been given clearance to emit up to 1000 kilograms of carbon dioxide.")
             country_overviews = country_overviews_dictionary.get(selected_country, 10)
             st.write(country_overviews)
+            
 # Species selection and tree planting
 if st.session_state["begin_clicked"] and st.session_state["confirm_clicked"] and st.session_state["product_choice_confirm"]:
     selected_species = st.selectbox("Choose the species of tree you want to plant:", species)
