@@ -97,7 +97,7 @@ if st.session_state["begin_clicked"]:
     if st.button("Click me to confirm the product!"):
         st.session_state["product_choice_confirmed"] = True
 
-if session_state[begin_clicked] and st.session_state["product_choice_confirm"]:
+if st.session_state[begin_clicked] and st.session_state["product_choice_confirm"]:
         selected_country = st.selectbox("Where do you want to establish the company?", countries)
         if st.button("Click me to confirm your choice!") and st.session_state["product_choice_confirmed"]:
             st.session_state["confirm_clicked"] = True
