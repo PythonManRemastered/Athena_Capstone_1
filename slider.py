@@ -48,6 +48,7 @@ project_intro = """
 """
 company_intro = """
 - You've been tasked with heading a medium-scale ceramic cup manufacturing facility's daily operations
+- You have been under a huge increase in popularity due to modern trends, and the cups that you make sell out almost immediately after they are listed!
 - You are looking through your paperwork and realise that you have exceeded the amount of carbon that you are allowed to emit
 - According to the manufacturing documents, you emitted approximately 2 kilograms of CO2 per cup, and about 8 kilograms of CO2 through the entire product development life cycle
 """
@@ -96,6 +97,7 @@ if st.button("Spend 100 buckaroos"):
 st.markdown(project_intro)
 st.caption("Note: Remember, you can hover over any of the terms in this article to see what they mean and where they've come from")
 
+
 # Start button to begin the application
 if st.button("Click me to begin"):
     st.session_state["begin_clicked"] = True
@@ -105,6 +107,12 @@ if st.button("Click me to begin"):
 if st.session_state["begin_clicked"]:
     st.title("Ceramic Cup Manufacturing Company Setup")
     st.markdown(company_intro)
+    cups_amount = st.slider("Choose how many cups you want to make:", 0, 800)
+    st.markdown(f"Great! We have made {cups_amount}")
+    cups_price = st.slider("Choose what these cups are priced at to the public: ", 0, 1000)
+    st.markdown(f"Cool! Since our product is  We have made about ${cups_price*cups_amount}")
+    st.markdown("Unfortunately, this also means we have emitted about {8*cups_amount} of carbon!")
+    
     selected_country = st.selectbox("Where do you want to establish the company?", countries)
     if st.button("Click me to confirm your choice!"):
         st.session_state["confirm_clicked"] = True
