@@ -48,7 +48,7 @@ country_overviews_dictionary = {
     "South Africa": "The South African Provincial area is known for heavy acts of deforestation. Though this makes our job a lot harder, we can still try!",
     "Zimbabwe": "Zimbabwe is a great place to start. According to the 17th Green Tax Amendment of Harare, deforestration is illegal in nearly all cases! This makes our job a lot easier",
     "Zambia": "Zambia is one of the countries of the world. Truly.",
-    "Russia": "Bro you sure??? Russia ?!!!?"
+    "Russia": "Due to the current conflict in the Russian peninsula, co-ordinating forestation politically may prove to be a problem. Doesn't matter: Let's try!"
 
 }
 
