@@ -44,7 +44,7 @@ project_intro = """
 - In this segment of my project, we will help you understand the problem surrounding seemingly simple concepts like this.
 """
 
-country_overviews = {
+country_overviews_dictionary = {
     "South Africa": "The South African Provincial area is known for heavy acts of deforestation. Though this makes our job a lot harder, we can still try!
     "Zimbabwe": "Zimbabwe is a great place to start. According to the 17th Green Tax Amendment of Harare, deforestration is illegal in nearly all cases! This makes our job a lot easier"
     "Zambia": "Zambia is one of the countries of the world. Truly."
@@ -79,7 +79,7 @@ if st.session_state["begin_clicked"]:
     if st.button("Click me to confirm your choice!"):
         st.session_state["confirm_clicked"] = True
         st.write(f"Perfect! Under new regulations in {selected_country}, you've been given clearance to emit up to 1000 kilograms of carbon dioxide.")
-        
+        country_overviews = country_overviews.get(countries, 30)
 # Species selection and tree planting
 if st.session_state["begin_clicked"] and st.session_state["confirm_clicked"]:
     selected_species = st.selectbox("Choose the species of tree you want to plant:", species)
