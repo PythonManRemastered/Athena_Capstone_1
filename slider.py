@@ -71,6 +71,10 @@ if st.button("Click me if you want to start over"):
         my_bar.progress(percent_complete + 1, text=restarter_text)
     time.sleep(1)
     my_bar.empty()
+    st.session_state["begin_clicked"] = False
+    st.session_state["confirm_clicked"] = False
+    st.session_state["year_pass_clicked"] = False
+    
     
     
     
