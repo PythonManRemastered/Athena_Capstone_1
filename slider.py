@@ -44,7 +44,8 @@ header.write("""
 </div>
 """.format(money_spent), unsafe_allow_html=True)
 
-
+if st.button("Spend 100 buckaroos"):
+    update_money_spent(100)
 st.markdown(project_intro)
 st.caption("Note: Remember, you can hover over any of the terms in this article to see what they mean and where they've come from")
 
@@ -58,7 +59,7 @@ if st.session_state["begin_clicked"]:
     if st.button("Click me to confirm your choice!"):
         st.session_state["confirm_clicked"] = True
         st.write(f"Perfect! Under new regulations in {selected_country}, you've been given clearance to emit up to 1000 kilograms of carbon dioxide.")
-        update_money_spent(10)
+        
 # Species selection and tree planting
 if st.session_state["begin_clicked"] and st.session_state["confirm_clicked"]:
     selected_species = st.selectbox("Choose the species of tree you want to plant:", species)
