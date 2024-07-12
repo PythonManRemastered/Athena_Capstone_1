@@ -70,15 +70,7 @@ def display_header_spent():
 
 display_header_spent()
 
-def display_header_made():
-    st.markdown(f"""
-    <div style="position: fixed; top: 100; right: 100; background-color: #0e1117; padding: 60px;">
-        <p>You've made</p>
-        <h>${st.session_state.money_made}</h>
-    </div>
-    """, unsafe_allow_html=True)
 
-display_header_made()
 
 def reset_everything():
     restarter_text = "Restarting article..."
