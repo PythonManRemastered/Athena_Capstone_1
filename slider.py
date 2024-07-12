@@ -91,10 +91,6 @@ if st.session_state["begin_clicked"] and st.session_state["confirm_clicked"]:
     st.write(f"You chose to plant {tree_number} {selected_species} trees. Each tree weighs approximately {tree_weight} kgs")
     
     st.session_state.tree_age += 1
-    tree_diameter += 1
-    tree_height += 1
-    st.write("The tree diameter is ", tree_diameter)
-    st.write("The tree height is ", tree_height)
     carbon_sequestered_original = (((((0.25*((tree_diameter)*(tree_diameter))*tree_height)*1.2)*0.725)*0.5)*3.67)* st.session_state.tree_number
     st.write(f"Carbon sequestered in the first year: {carbon_sequestered_original} kgs")
     if carbon_sequestered_original > 1000:
@@ -120,7 +116,12 @@ if st.session_state["begin_clicked"] and st.session_state["confirm_clicked"]:
             st.write(f"Now that {st.session_state.tree_age} year(s) have passed, is there any difference in the amount of carbon sequestered?")     
             st.write(f"Last year, you chose to plant {st.session_state.tree_number} {selected_species} trees.")
             st.session_state.tree_age += 1
+            tree_diameter += 1
+            tree_height += 1
+            st.write("The tree diameter is ", tree_diameter)
+            st.write("The tree height is ", tree_height)
             st.write("The tree age is ",tree_age)
+            
             carbon_sequestered_original += (st.session_state.tree_age * st.session_state.tree_number * 20) / 100
             
             st.write(f"Carbon sequestered in the second year: {carbon_sequestered_original} kgs")
