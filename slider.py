@@ -74,6 +74,9 @@ if st.button("Click me if you want to start over"):
     st.session_state["begin_clicked"] = False
     st.session_state["confirm_clicked"] = False
     st.session_state["year_pass_clicked"] = False
+    tree_height = 1
+    tree_diameter = 1
+    money_spent = 0
     
     
     
