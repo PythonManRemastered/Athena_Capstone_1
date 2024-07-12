@@ -31,9 +31,8 @@ def update_tree_number(number):
     st.session_state.tree_number = number
 
 # Main app UI
-st.title("Ceramic Cup Manufacturing Company Setup")
 
-st.subheader("What are we tackling in this cool article?")
+st.header("What are we tackling in this cool article?")
 project_intro = """
 - Carbon credits are an incentive to decrease carbon emissions by allowing companies to buy 'credits' that allow for a certain amount of carbon emissions.
 - Instead of completely halting all carbon emissions, this allows for maximums and quotas to be set for companies and organizations.
@@ -90,6 +89,7 @@ st.caption("Note: Remember, you can hover over any of the terms in this article 
 # Start button to begin the application
 if st.button("Click me to begin"):
     st.session_state["begin_clicked"] = True
+    st.title("Ceramic Cup Manufacturing Company Setup")
 
 # Country selection and confirmation
 if st.session_state["begin_clicked"]:
