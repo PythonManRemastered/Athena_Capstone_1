@@ -4,6 +4,7 @@ import time
 # List of countries and species
 countries = ["Zambia", "Zimbabwe", "South Africa", "Russia"]
 species = ["Apple", "Oak", "Yellow Birch", "Chestnut"]
+products = ["Ceramics", "Silicon Chips", "Industrial adhesive"]
 tree_height = 1
 tree_diameter = 1
 tree_age = 1
@@ -14,6 +15,8 @@ if "begin_clicked" not in st.session_state:
     st.session_state["begin_clicked"] = False
 if "confirm_clicked" not in st.session_state:
     st.session_state["confirm_clicked"] = False
+if "product_choice_confirmed" not in st.session_state:
+    st.session_state["product_choice_confirmed"] = False
 if "year_pass_clicked" not in st.session_state:
     st.session_state["year_pass_clicked"] = False
 if "chapter_two_advance" not in st.session_state:
@@ -31,9 +34,8 @@ def update_tree_number(number):
     st.session_state.tree_number = number
 
 # Main app UI
-st.title("Ceramic Cup Manufacturing Company Setup")
 
-st.subheader("What are we tackling in this cool article?")
+st.header("What are we tackling in this cool article?")
 project_intro = """
 - Carbon credits are an incentive to decrease carbon emissions by allowing companies to buy 'credits' that allow for a certain amount of carbon emissions.
 - Instead of completely halting all carbon emissions, this allows for maximums and quotas to be set for companies and organizations.
@@ -77,9 +79,6 @@ def reset_everything():
 if st.button("Click me if you want to start over"):
     reset_everything()
     
-    
-    
-    
 
 if st.button("Spend 100 buckaroos"):
     update_money_spent(100)
@@ -93,12 +92,16 @@ if st.button("Click me to begin"):
 
 # Country selection and confirmation
 if st.session_state["begin_clicked"]:
-    selected_country = st.selectbox("Where do you want to establish the company?", countries)
-    if st.button("Click me to confirm your choice!"):
-        st.session_state["confirm_clicked"] = True
-        st.write(f"Perfect! Under new regulations in {selected_country}, you've been given clearance to emit up to 1000 kilograms of carbon dioxide.")
-        country_overviews = country_overviews_dictionary.get(selected_country, 10)
-        st.write(country_overviews)
+    st.title("Chapter 1: The evaluation problem")
+    selected_product = st.selectbox("What kind of products should we make?", products)
+    if st.button("Click me to confirm the product!"):
+        st.session_state["product_choice_confirmed"] = True
+        selected_country = st.selectbox("Where do you want to establish the company?", countries)
+        if st.button("Click me to confirm your choice!"):
+            st.session_state["confirm_clicked"] = True
+            st.write(f"Perfect! Under new regulations in {selected_country}, you've been given clearance to emit up to 1000 kilograms of carbon dioxide.")
+            country_overviews = country_overviews_dictionary.get(selected_country, 10)
+            st.write(country_overviews)
 # Species selection and tree planting
 if st.session_state["begin_clicked"] and st.session_state["confirm_clicked"]:
     selected_species = st.selectbox("Choose the species of tree you want to plant:", species)
