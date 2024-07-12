@@ -54,8 +54,6 @@ header.write("""
 </div>
 """.format(money_spent), unsafe_allow_html=True)
 
-if st.button("Spend 100 buckaroos"):
-    update_money_spent(100)
 st.markdown(project_intro)
 st.caption("Note: Remember, you can hover over any of the terms in this article to see what they mean and where they've come from")
 
