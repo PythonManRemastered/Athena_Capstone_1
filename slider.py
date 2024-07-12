@@ -20,10 +20,6 @@ if "year_pass_clicked" not in st.session_state:
     st.session_state["year_pass_clicked"] = False
 if "money_spent" not in st.session_state:
     st.session_state["money_spent"] = 0
-if "tree_number" not in st.session_state:
-    st.session_state["tree_number"] = 0
-if "tree_age" not in st.session_state:
-    st.session_state["tree_age"] = 0
 
 # Functions to update state
 def update_money_spent(amount):
