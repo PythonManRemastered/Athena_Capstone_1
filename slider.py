@@ -72,7 +72,7 @@ display_header_spent()
 
 def display_header_made():
     st.markdown(f"""
-    <div style="position: fixed; top: 0; right: 0; background-color: #0e1117; padding: 60px;">
+    <div style="position: fixed; top: 10; right: 0; background-color: #0e1117; padding: 60px;">
         <p>You've made</p>
         <h>${st.session_state.money_made}</h>
     </div>
