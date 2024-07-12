@@ -94,11 +94,12 @@ st.caption("Note: Remember, you can hover over any of the terms in this article 
 # Start button to begin the application
 if st.button("Click me to begin"):
     st.session_state["begin_clicked"] = True
-    st.title("Ceramic Cup Manufacturing Company Setup")
-    st.markdown(company_intro)
+
 
 # Country selection and confirmation
 if st.session_state["begin_clicked"]:
+    st.title("Ceramic Cup Manufacturing Company Setup")
+    st.markdown(company_intro)
     selected_country = st.selectbox("Where do you want to establish the company?", countries)
     if st.button("Click me to confirm your choice!"):
         st.session_state["confirm_clicked"] = True
