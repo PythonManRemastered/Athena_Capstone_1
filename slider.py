@@ -105,13 +105,13 @@ if st.button("Click me to begin"):
 
 # Country selection and confirmation
 if st.session_state["begin_clicked"]:
-    st.title("Ceramic Cup Manufacturing Company Setup 1000")
+    st.title("Ceramic Cup Manufacturing Company Setup")
     st.markdown(company_intro)
-    cups_amount = st.slider("Choose how many cups you want to make:", 0, 800)
-    st.markdown(f"Great! We have made {cups_amount}")
-    cups_price = st.slider("Choose what these cups are priced at to the public: ", 0, 1000)
+    cups_amount = st.slider("Choose how many cups you want to make:", 0, 80000)
+    st.markdown(f"Great! We have made {cups_amount} cups")
+    cups_price = st.slider("Choose what these cups are priced at to the public: ", 0, 100)
     st.markdown(f"Cool! Since our product is  We have made about ${cups_price*cups_amount}")
-    st.markdown("Unfortunately, this also means we have emitted about {8*cups_amount} of carbon!")
+    st.markdown(f"Unfortunately, this also means we have emitted about {8*cups_amount} of carbon!")
     selected_country = st.selectbox("Where do you want to establish the company?", countries)
     if st.button("Click me to confirm your choice!"):
         st.session_state["confirm_clicked"] = True
