@@ -94,7 +94,7 @@ if st.session_state["begin_clicked"] and st.session_state["confirm_clicked"]:
     tree_diameter += 1
     tree_height += 1
     st.write("The tree diameter is ", tree_diameter)
-    st.write("The tree height is " tree_height)
+    st.write("The tree height is ", tree_height)
     carbon_sequestered_original = (((((0.25*((tree_diameter)*(tree_diameter))*tree_height)*1.2)*0.725)*0.5)*3.67)* st.session_state.tree_number
     st.write(f"Carbon sequestered in the first year: {carbon_sequestered_original} kgs")
     if carbon_sequestered_original > 1000:
