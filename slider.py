@@ -96,6 +96,8 @@ if st.session_state["begin_clicked"]:
     selected_product = st.selectbox("What kind of products should we make?", products)
     if st.button("Click me to confirm the product!"):
         st.session_state["product_choice_confirmed"] = True
+
+if session_state[begin_clicked] and st.session_state["product_choice_confirm"]:
         selected_country = st.selectbox("Where do you want to establish the company?", countries)
         if st.button("Click me to confirm your choice!") and st.session_state["product_choice_confirmed"]:
             st.session_state["confirm_clicked"] = True
@@ -103,7 +105,7 @@ if st.session_state["begin_clicked"]:
             country_overviews = country_overviews_dictionary.get(selected_country, 10)
             st.write(country_overviews)
 # Species selection and tree planting
-if st.session_state["begin_clicked"] and st.session_state["confirm_clicked"]:
+if st.session_state["begin_clicked"] and st.session_state["confirm_clicked"] and st.session_state["product_choice_confirm"]:
     selected_species = st.selectbox("Choose the species of tree you want to plant:", species)
     
     tree_weights = {
@@ -162,7 +164,7 @@ if st.session_state["begin_clicked"] and st.session_state["confirm_clicked"]:
                         In the first year the trees sequestered 2000kgs\n
                         In the second year, as the trees increased in size, they were able to sequester 4000kgs!
             """)
-if st.session_state["begin_clicked"] and st.session_state["confirm_clicked"] and st.session_state["year_pass_clicked"] and carbon_sequestered_original > 1000:
+if st.session_state["begin_clicked"] and st.session_state["confirm_clicked"] and st.session_state["year_pass_clicked"] and st.session_state["product_choice_confirm"] and carbon_sequestered_original > 1000:
     st.error(f"""
              Suddenly, the government of {selected_country} decides that the land you're using to plant these trees have oil under them. They send you a message to tell 
              them how many trees they will have to cut down to clear the area so that they can figure out how much labour they'd need
@@ -179,5 +181,5 @@ if st.session_state["begin_clicked"] and st.session_state["confirm_clicked"] and
     if st.button("Click me to delve deeper!"):
         st.session_state["chapter_two_advance"] = True
         reset_everything()
-if st.session_state["begin_clicked"] and st.session_state["confirm_clicked"] and st.session_state["year_pass_clicked"] and st.session_state["chapter_two_advance"] and carbon_sequestered_original > 1000:
+if st.session_state["begin_clicked"] and st.session_state["confirm_clicked"] and st.session_state["year_pass_clicked"] and st.session_state["chapter_two_advance"] and st.session_state["product_choice_confirm"] and carbon_sequestered_original > 1000:
     st.header("Chapter 2: What's next?")
