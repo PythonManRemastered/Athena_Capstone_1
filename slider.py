@@ -16,6 +16,8 @@ if "confirm_clicked" not in st.session_state:
     st.session_state["confirm_clicked"] = False
 if "year_pass_clicked" not in st.session_state:
     st.session_state["year_pass_clicked"] = False
+if "chapter_two_advance" not in st.session_state:
+    st.session_state["chapter_two_advance"] = False
 if "money_spent" not in st.session_state:
     st.session_state["money_spent"] = 0
 if "tree_number" not in st.session_state:
@@ -27,8 +29,6 @@ def update_money_spent(amount):
 
 def update_tree_number(number):
     st.session_state.tree_number = number
-
-
 
 # Main app UI
 st.title("Ceramic Cup Manufacturing Company Setup")
@@ -60,8 +60,7 @@ def display_header():
     """, unsafe_allow_html=True)
 
 display_header()
-
-if st.button("Click me if you want to start over"):
+def reset_everything():
     restarter_text = "Restarting article..."
     my_bar = st.progress(0, text=restarter_text)
     for percent_complete in range(100):
@@ -75,6 +74,8 @@ if st.button("Click me if you want to start over"):
     tree_height = 1
     tree_diameter = 1
     update_money_spent(0)
+if st.button("Click me if you want to start over"):
+    reset_everything()
     
     
     
@@ -154,7 +155,7 @@ if st.session_state["begin_clicked"] and st.session_state["confirm_clicked"]:
             st.write("Notice how the number didn't just double over the last year?")
             expander = st.expander("Click me to see why")
             expander.write("""
-                        As a tree grows up, it grows more wood to store carbon in. Hence, the amount of carbon a tree can sequester per year actually increases as if grows up.\n 
+                        As a tree grows up, it grows more wood to store carbon in. Hence, the amount of carbon a tree can sequester per year increases as if grows up.\n 
                         In the first year the trees sequestered 2000kgs\n
                         In the second year, as the trees increased in size, they were able to sequester 4000kgs!
             """)
@@ -169,3 +170,11 @@ if st.session_state["begin_clicked"] and st.session_state["confirm_clicked"] and
     if st.button("Click me to confirm your choice"):
         st.write(f"We lost {tree_number_lost} trees")
         st.write(f"Because of this, about {carbon_lost} kgs of the carbon we sequestered is now back into the atmosphere")
+        st.header("So that's it....right? Did we just solve the global carbon sequestration?")
+        st.header("Like we have seen before, there are always more variables to take into consideration. So let's look further!")
+
+if st.button("Click me to delve deeper!"):
+    st.session_state["chapter_two_advance"] = True
+if st.session_state["begin_clicked"] and st.session_state["confirm_clicked"] and st.session_state["year_pass_clicked"] and st.session_state["chapter_two_advance"] and carbon_sequestered_original > 1000:
+    reset_everything()
+    st.header("Chapter 2: What's next?")
