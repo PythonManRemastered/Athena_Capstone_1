@@ -1,16 +1,10 @@
 import streamlit as st
 import time
+
 # List of countries and species
 countries = ["Zambia", "Zimbabwe", "South Africa", "Russia"]
 species = ["Apple", "Oak", "Yellow Birch", "Chestnut"]
-tree_weight = 0
-tree_age = 0
-tree_number = 0
-# the following are constant variables, the data on avg diameter of each tree species not collected yet
-tree_diameter = 2
-tree_height = 2
-basic = 0
-money_spent = (tree_number * 20) + (1.05 * tree_age)
+
 # Initialize session state variables
 if "begin_clicked" not in st.session_state:
     st.session_state["begin_clicked"] = False
@@ -20,6 +14,10 @@ if "year_pass_clicked" not in st.session_state:
     st.session_state["year_pass_clicked"] = False
 if "money_spent" not in st.session_state:
     st.session_state["money_spent"] = 0
+if "tree_number" not in st.session_state:
+    st.session_state["tree_number"] = 0
+if "tree_age" not in st.session_state:
+    st.session_state["tree_age"] = 0
 
 # Functions to update state
 def update_money_spent(amount):
@@ -31,11 +29,7 @@ def update_tree_number(number):
 def update_tree_age(age):
     st.session_state.tree_age = age
 
-
-if st.button("Spend 100 buckaroos"):
-    update_money_spent(100)
-    st.write(money_spent)
-
+# Main app UI
 st.title("Ceramic Cup Manufacturing Company Setup")
 
 st.subheader("What are we tackling in this cool article?")
@@ -47,13 +41,19 @@ project_intro = """
 - In this segment of my project, we will help you understand the problem surrounding seemingly simple concepts like this.
 """
 
-header = st.container()
-header.write("""
-<div style="position: fixed; top: 0; right: 0; background-color: #0e1117; padding: 60px;">
-    <p>You've spent</p>
-    <h>${}</h>
-</div>
-""".format(money_spent), unsafe_allow_html=True)
+# Display header with updated money spent
+def display_header():
+    st.markdown(f"""
+    <div style="position: fixed; top: 0; right: 0; background-color: #0e1117; padding: 60px;">
+        <p>You've spent</p>
+        <h>${st.session_state.money_spent}</h>
+    </div>
+    """, unsafe_allow_html=True)
+
+display_header()
+
+if st.button("Spend 100 buckaroos"):
+    update_money_spent(100)
 
 st.markdown(project_intro)
 st.caption("Note: Remember, you can hover over any of the terms in this article to see what they mean and where they've come from")
@@ -72,33 +72,30 @@ if st.session_state["begin_clicked"]:
 # Species selection and tree planting
 if st.session_state["begin_clicked"] and st.session_state["confirm_clicked"]:
     selected_species = st.selectbox("Choose the species of tree you want to plant:", species)
-    # real number statistics, don't change unless species change
-    if selected_species == "Oak":
-        tree_weight = 41
-        
-    elif selected_species == "Apple":
-        tree_weight = 30
-        
-    elif selected_species == "Yellow Birch":
-        tree_weight = 31
-        
-    else:
-        tree_weight = 30
-        
+    
+    tree_weights = {
+        "Oak": 41,
+        "Apple": 30,
+        "Yellow Birch": 31,
+        "Chestnut": 30
+    }
+    
+    tree_weight = tree_weights.get(selected_species, 30)
     
     tree_number = st.slider("Choose how many trees you want to plant", 0, 1000)
-
+    update_tree_number(tree_number)
+    
     st.write(f"You chose to plant {tree_number} {selected_species} trees. Each tree weighs approximately {tree_weight} kgs")
-     
-    tree_age = tree_age + 1
-    carbon_sequestered_original = (((((0.25*(tree_diameter*tree_diameter)*tree_height)*1.2)*0.725)*0.5)*3.67)* tree_number
+    
+    st.session_state.tree_age += 1
+    carbon_sequestered_original = (((((0.25*(tree_diameter*tree_diameter)*tree_height)*1.2)*0.725)*0.5)*3.67)* st.session_state.tree_number
     st.write(f"Carbon sequestered in the first year: {carbon_sequestered_original} kgs")
-    if carbon_sequestered_original>1000:
+    if carbon_sequestered_original > 1000:
         st.subheader(f"Great! You've completely sequestered your carbon emissions with {tree_number} trees.")
     else:
         st.write(f"Not yet! We still need to sequester {1000 - int(carbon_sequestered_original)} kgs more!")
-    
-  # Simulate time passing  
+
+    # Simulate time passing  
     if st.button("Pass a Year"):
         st.session_state["year_pass_clicked"] = True
         progress_text = "Simulating one entire year passing..."
@@ -113,10 +110,10 @@ if st.session_state["begin_clicked"] and st.session_state["confirm_clicked"]:
             st.warning("Hey! You still haven't planted enough trees! Go back!")
         else:
             st.balloons()
-            st.write(f"Now that {tree_age} year(s) have passed, is there any difference in the amount of carbon sequestered?")     
-            st.write(f"Last year, you chose to plant {tree_number} {selected_species} trees.")
-            tree_age += 1
-            carbon_sequestered_original += (tree_age*tree_number*20)/100
+            st.write(f"Now that {st.session_state.tree_age} year(s) have passed, is there any difference in the amount of carbon sequestered?")     
+            st.write(f"Last year, you chose to plant {st.session_state.tree_number} {selected_species} trees.")
+            st.session_state.tree_age += 1
+            carbon_sequestered_original += (st.session_state.tree_age * st.session_state.tree_number * 20) / 100
             
             st.write(f"Carbon sequestered in the second year: {carbon_sequestered_original} kgs")
         
@@ -127,14 +124,14 @@ if st.session_state["begin_clicked"] and st.session_state["confirm_clicked"]:
                         In the first year the trees sequestered 2000kgs\n
                         In the second year, as the trees increased in size, they were able to sequester 4000kgs!
             """)
-if st.session_state["begin_clicked"] and st.session_state["confirm_clicked"] and st.session_state["year_pass_clicked"] and carbon_sequestered_original>1000:
+if st.session_state["begin_clicked"] and st.session_state["confirm_clicked"] and st.session_state["year_pass_clicked"] and carbon_sequestered_original > 1000:
     st.error(f"""
              Suddenly, the government of {selected_country} decides that the land you're using to plant these trees have oil under them. They send you a message to tell 
              them how many trees they will have to cut down to clear the area so that they can figure out how much labour they'd need
              """)
-    tree_number_lost = st.slider("Choose how many trees the government must cut down", 0, tree_number)
-    carbon_after_deforestration = (((((0.25*(tree_diameter*tree_diameter)*tree_height)*1.2)*0.725)*0.5)*3.67)* (tree_number-tree_number_lost)
-    carbon_lost = carbon_sequestered_original-carbon_after_deforestration
+    tree_number_lost = st.slider("Choose how many trees the government must cut down", 0, st.session_state.tree_number)
+    carbon_after_deforestation = (((((0.25*(tree_diameter*tree_diameter)*tree_height)*1.2)*0.725)*0.5)*3.67)* (st.session_state.tree_number - tree_number_lost)
+    carbon_lost = carbon_sequestered_original - carbon_after_deforestation
     if st.button("Click me to confirm your choice"):
         st.write(f"We lost {tree_number_lost} trees")
         st.write(f"Because of this, about {carbon_lost} kgs of the carbon we sequestered is now back into the atmosphere")
