@@ -94,7 +94,7 @@ if st.button("Click me to begin"):
 if st.session_state["begin_clicked"]:
     st.title("Chapter 1: The evaluation problem")
     selected_product = st.selectbox("What kind of products should we make?", products)
-    if st.button("Click me to confirm the product!"):
+if st.button("Click me to confirm the product!"):
         st.session_state["product_choice_confirmed"] = True
 
 if st.session_state["begin_clicked"] and st.session_state["product_choice_confirm"]:
