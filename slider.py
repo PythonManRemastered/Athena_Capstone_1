@@ -18,6 +18,26 @@ if "confirm_clicked" not in st.session_state:
     st.session_state["confirm_clicked"] = False
 if "year_pass_clicked" not in st.session_state:
     st.session_state["year_pass_clicked"] = False
+if "money_spent" not in st.session_state:
+    st.session_state["money_spent"] = 0
+if "tree_number" not in st.session_state:
+    st.session_state["tree_number"] = 0
+if "tree_age" not in st.session_state:
+    st.session_state["tree_age"] = 0
+
+# Functions to update state
+def update_money_spent(amount):
+    st.session_state.money_spent += amount
+
+def update_tree_number(number):
+    st.session_state.tree_number = number
+
+def update_tree_age(age):
+    st.session_state.tree_age = age
+
+
+if st.button("Spend 100 buckaroos"):
+    update_money_spent(100)
 
 st.title("Ceramic Cup Manufacturing Company Setup")
 
@@ -29,12 +49,6 @@ project_intro = """
 - You can do this in many ways, from planting trees to adopting more sustainable manufacturing practices.
 - In this segment of my project, we will help you understand the problem surrounding seemingly simple concepts like this.
 """
-
-if 'money_spent' not in st.session_state:
-    st.session_state.money_spent = 0 
-
-def update_money_spent(amount):
-    st.session_state.money_spent += amount
 
 header = st.container()
 header.write("""
