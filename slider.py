@@ -6,6 +6,7 @@ countries = ["Zambia", "Zimbabwe", "South Africa", "Russia"]
 species = ["Apple", "Oak", "Yellow Birch", "Chestnut"]
 tree_height = 1
 tree_diameter = 1
+tree_age = 1
 # height and diameter is in unit measurement
 
 # Initialize session state variables
@@ -19,8 +20,6 @@ if "money_spent" not in st.session_state:
     st.session_state["money_spent"] = 0
 if "tree_number" not in st.session_state:
     st.session_state["tree_number"] = 0
-if "tree_age" not in st.session_state:
-    st.session_state["tree_age"] = 0
 
 # Functions to update state
 def update_money_spent(amount):
@@ -29,8 +28,7 @@ def update_money_spent(amount):
 def update_tree_number(number):
     st.session_state.tree_number = number
 
-def update_tree_age(age):
-    st.session_state.tree_age = age
+
 
 # Main app UI
 st.title("Ceramic Cup Manufacturing Company Setup")
@@ -118,7 +116,6 @@ if st.session_state["begin_clicked"] and st.session_state["confirm_clicked"]:
     
     st.write(f"You chose to plant {tree_number} {selected_species} trees. Each tree weighs approximately {tree_weight} kgs")
     
-    st.session_state.tree_age += 1
     carbon_sequestered_original = (((((0.25*((tree_diameter)*(tree_diameter))*tree_height)*1.2)*0.725)*0.5)*3.67)* st.session_state.tree_number
     st.write(f"Carbon sequestered in the first year: {carbon_sequestered_original} kgs")
     if carbon_sequestered_original > 1000:
