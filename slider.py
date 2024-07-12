@@ -4,6 +4,9 @@ import time
 # List of countries and species
 countries = ["Zambia", "Zimbabwe", "South Africa", "Russia"]
 species = ["Apple", "Oak", "Yellow Birch", "Chestnut"]
+tree_height = 1
+tree_diameter = 1
+# height and diameter is in unit measurement
 
 # Initialize session state variables
 if "begin_clicked" not in st.session_state:
@@ -79,7 +82,7 @@ if st.session_state["begin_clicked"] and st.session_state["confirm_clicked"]:
         "Yellow Birch": 31,
         "Chestnut": 30
     }
-    
+    # .get prevents key issues, 30 is the default value for non-recognizable species
     tree_weight = tree_weights.get(selected_species, 30)
     
     tree_number = st.slider("Choose how many trees you want to plant", 0, 1000)
@@ -88,7 +91,11 @@ if st.session_state["begin_clicked"] and st.session_state["confirm_clicked"]:
     st.write(f"You chose to plant {tree_number} {selected_species} trees. Each tree weighs approximately {tree_weight} kgs")
     
     st.session_state.tree_age += 1
-    carbon_sequestered_original = (((((0.25*(tree_diameter*tree_diameter)*tree_height)*1.2)*0.725)*0.5)*3.67)* st.session_state.tree_number
+    tree_diameter += 1
+    tree_height += 1
+    st.write(tree_diameter)
+    st.write(tree_height)
+    carbon_sequestered_original = (((((0.25*((tree_diameter)*(tree_diameter))*tree_height)*1.2)*0.725)*0.5)*3.67)* st.session_state.tree_number
     st.write(f"Carbon sequestered in the first year: {carbon_sequestered_original} kgs")
     if carbon_sequestered_original > 1000:
         st.subheader(f"Great! You've completely sequestered your carbon emissions with {tree_number} trees.")
@@ -113,6 +120,7 @@ if st.session_state["begin_clicked"] and st.session_state["confirm_clicked"]:
             st.write(f"Now that {st.session_state.tree_age} year(s) have passed, is there any difference in the amount of carbon sequestered?")     
             st.write(f"Last year, you chose to plant {st.session_state.tree_number} {selected_species} trees.")
             st.session_state.tree_age += 1
+            st.write(tree_age)
             carbon_sequestered_original += (st.session_state.tree_age * st.session_state.tree_number * 20) / 100
             
             st.write(f"Carbon sequestered in the second year: {carbon_sequestered_original} kgs")
