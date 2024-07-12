@@ -15,7 +15,7 @@ if "begin_clicked" not in st.session_state:
     st.session_state["begin_clicked"] = False
 if "confirm_clicked" not in st.session_state:
     st.session_state["confirm_clicked"] = False
-if "product_choice_confirmed" not in st.session_state:
+if "product_choice_confirm" not in st.session_state:
     st.session_state["product_choice_confirmed"] = False
 if "year_pass_clicked" not in st.session_state:
     st.session_state["year_pass_clicked"] = False
