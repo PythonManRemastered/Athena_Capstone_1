@@ -192,8 +192,8 @@ if st.session_state["begin_clicked"] and st.session_state["confirm_clicked"] and
         st.header("So that's it....right? Did we just solve the global carbon sequestration?")
         st.header("Like we have seen before, there are always more variables to take into consideration. So let's look further!")
     # next chapter advancement button 
-    if st.button("Click me to delve deeper!"):
-        st.session_state["chapter_two_advance"] = True
-        reset_everything()
+        if st.button("Click me to delve deeper!"):
+            st.session_state["chapter_two_advance"] = True
+            reset_everything()
 if st.session_state["begin_clicked"] and st.session_state["confirm_clicked"] and st.session_state["year_pass_clicked"] and st.session_state["chapter_two_advance"] and carbon_sequestered_original > 1000:
     st.header("Chapter 2: What's next?")
