@@ -79,7 +79,7 @@ if st.session_state["begin_clicked"]:
     if st.button("Click me to confirm your choice!"):
         st.session_state["confirm_clicked"] = True
         st.write(f"Perfect! Under new regulations in {selected_country}, you've been given clearance to emit up to 1000 kilograms of carbon dioxide.")
-        country_overviews = country_overviews_dictionary.get(countries)
+        country_overviews = country_overviews_dictionary.get(countries,10)
         st.write(country_overviews)
 # Species selection and tree planting
 if st.session_state["begin_clicked"] and st.session_state["confirm_clicked"]:
