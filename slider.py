@@ -30,6 +30,12 @@ project_intro = """
 - In this segment of my project, we will help you understand the problem surrounding seemingly simple concepts like this.
 """
 
+if 'money_spent' not in st.session_state:
+    st.session_state.money_spent = 0 
+
+def update_money_spent(amount):
+    st.session_state.money_spent += amount
+
 header = st.container()
 header.write("""
 <div style="position: fixed; top: 0; right: 0; background-color: #0e1117; padding: 60px;">
@@ -52,7 +58,7 @@ if st.session_state["begin_clicked"]:
     if st.button("Click me to confirm your choice!"):
         st.session_state["confirm_clicked"] = True
         st.write(f"Perfect! Under new regulations in {selected_country}, you've been given clearance to emit up to 1000 kilograms of carbon dioxide.")
-        money_spent = 10
+        update_money_spent(10)
 # Species selection and tree planting
 if st.session_state["begin_clicked"] and st.session_state["confirm_clicked"]:
     selected_species = st.selectbox("Choose the species of tree you want to plant:", species)
