@@ -97,11 +97,11 @@ if st.session_state["begin_clicked"]:
     if st.button("Click me to confirm the product!"):
         st.session_state["product_choice_confirmed"] = True
         selected_country = st.selectbox("Where do you want to establish the company?", countries)
-        if st.button("Click me to confirm your choice!"):
-            st.session_state["confirm_clicked"] = True
-            st.write(f"Perfect! Under new regulations in {selected_country}, you've been given clearance to emit up to 1000 kilograms of carbon dioxide.")
-            country_overviews = country_overviews_dictionary.get(selected_country, 10)
-            st.write(country_overviews)
+    if st.button("Click me to confirm your choice!"):
+        st.session_state["confirm_clicked"] = True
+        st.write(f"Perfect! Under new regulations in {selected_country}, you've been given clearance to emit up to 1000 kilograms of carbon dioxide.")
+        country_overviews = country_overviews_dictionary.get(selected_country, 10)
+        st.write(country_overviews)
 # Species selection and tree planting
 if st.session_state["begin_clicked"] and st.session_state["confirm_clicked"]:
     selected_species = st.selectbox("Choose the species of tree you want to plant:", species)
