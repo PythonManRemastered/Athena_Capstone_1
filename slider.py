@@ -21,6 +21,8 @@ if "chapter_two_advance" not in st.session_state:
     st.session_state["chapter_two_advance"] = False
 if "money_spent" not in st.session_state:
     st.session_state["money_spent"] = 0
+if "money_made" not in st.session_state:
+    st.session_state["money_made"] = 0
 if "tree_number" not in st.session_state:
     st.session_state["tree_number"] = 0
 
@@ -58,7 +60,7 @@ country_overviews_dictionary = {
 
 }
 # Display header with updated money spent
-def display_header():
+def display_header_spent():
     st.markdown(f"""
     <div style="position: fixed; top: 0; right: 0; background-color: #0e1117; padding: 60px;">
         <p>You've spent</p>
@@ -66,7 +68,18 @@ def display_header():
     </div>
     """, unsafe_allow_html=True)
 
-display_header()
+display_header_spent()
+
+def display_header_made():
+    st.markdown(f"""
+    <div style="position: fixed; top: 0; right: 0; background-color: #0e1117; padding: 60px;">
+        <p>You've made</p>
+        <h>${st.session_state.money_made}</h>
+    </div>
+    """, unsafe_allow_html=True)
+
+display_header_made()
+
 def reset_everything():
     restarter_text = "Restarting article..."
     my_bar = st.progress(0, text=restarter_text)
