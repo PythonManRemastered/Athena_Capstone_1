@@ -53,11 +53,10 @@ company_intro = """
 country_overviews_dictionary = {
     "South Africa": "The South African Provincial area is known for heavy acts of deforestation. Though this makes our job a lot harder, we can still try!",
     "Zimbabwe": "Zimbabwe is a great place to start. According to the 17th Green Tax Amendment of Harare, deforestration is illegal in nearly all cases! This makes our job a lot easier",
-    "Zambia": "Zambia is one of the countries of the world. Truly.",
+    "Zambia": "Zambia was one of the top regions responsible for 58% of all tree cover loss between 2001 and 2023. Though this might mean forestration policies there may be harder to implement, the country needs more tree cover. Perfect: Let's begin!",
     "Russia": "Due to the current conflict in the Russian peninsula, co-ordinating forestation politically may prove to be a problem. Doesn't matter: Let's try!"
 
 }
-st.markdown(country_overviews_dictionary)
 # Display header with updated money spent
 def display_header():
     st.markdown(f"""
@@ -85,9 +84,6 @@ def reset_everything():
 if st.button("Click me if you want to start over"):
     reset_everything()
     
-    
-    
-    
 
 if st.button("Spend 100 buckaroos"):
     update_money_spent(100)
@@ -99,7 +95,7 @@ st.caption("Note: Remember, you can hover over any of the terms in this article 
 if st.button("Click me to begin"):
     st.session_state["begin_clicked"] = True
     st.title("Ceramic Cup Manufacturing Company Setup")
-    st.write
+    st.markdown(company_intro)
 
 # Country selection and confirmation
 if st.session_state["begin_clicked"]:
