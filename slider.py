@@ -128,7 +128,7 @@ if st.session_state["begin_clicked"]:
     st.title("Ceramic Cup Manufacturing Company Setup")
     st.markdown(company_intro)
     global cups_amount 
-    cups_amount = st.slider("Choose how many cups you want to make each day:", 0, 800)
+    cups_amount = st.slider("Choose how many cups you want to make each day:", 0, 5000)
     st.markdown(f"Great! We have made {cups_amount} cups")
     global cups_price 
     cups_price = st.slider("Choose what these cups are priced at to the public: ", 0, 100)
