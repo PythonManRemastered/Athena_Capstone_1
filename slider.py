@@ -229,7 +229,7 @@ if st.session_state["carbon_offset_cost_confirm"] and st.session_state["begin_cl
     st.markdown(first_year_prices)
     st.markdown(f"But remember, we made a lot of money from our cups. To be specific, we made about {money_made} USD")
     st.markdown("Thus, our costs for this year can be calculated as the following:")
-    st.latex("Total costs (over all our planted trees) - earnings (from our ceramic cup sales)")
+    st.latex("Cost_Per_Tree * Number_of_trees - Sales * Price_of_each_cup")
     st.markdown(f"This means that our total costs for our first year were about {(tree_number*first_year_prices_constant) - money_made}")
 
 if st.button("Click me to delve deeper!") and st.session_state["tree_cut_confirm"] and st.session_state["begin_clicked"] and st.session_state["confirm_clicked"] and st.session_state["year_pass_clicked"] and carbon_sequestered_original > 1000:
