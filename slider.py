@@ -167,7 +167,8 @@ if st.session_state["begin_clicked"] and st.session_state["confirm_clicked"]:
             st.warning("Hey! You still haven't planted enough trees! Go back!")
         else:
             st.balloons()
-            st.write(f"Now that {tree_age} year(s) have passed, is there any difference in the amount of carbon sequestered?")     
+            tree_age += 1
+            st.write(f"Now that {tree_age-1} year(s) have passed, is there any difference in the amount of carbon sequestered?")     
             st.write(f"Last year, you chose to plant {st.session_state.tree_number} {selected_species} trees.")
             tree_age += 1
             tree_diameter += 1
