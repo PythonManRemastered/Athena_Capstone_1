@@ -183,9 +183,9 @@ if st.session_state["begin_clicked"] and st.session_state["confirm_clicked"]:
             st.write("Notice how the number didn't just double over the last year?")
             expander = st.expander("Click me to see why")
             expander.write("""
-                        As a tree grows up, it grows more wood to store carbon in. Hence, the amount of carbon a tree can sequester per year increases as if grows up.\n 
-                        In the first year the trees sequestered 2000kgs\n
-                        In the second year, as the trees increased in size, they were able to sequester 4000kgs!
+                        As a tree grows up, it grows more wood to store carbon in. Hence, the amount of carbon a tree can sequester per year increases as it grows up.\n 
+                        Since the tree grows quite a bit during its first year of life, it becomes an exponentially larger carbon sink until the age of 5, after which\n
+                        there is a steady increase in a tree's ability to hold carbon
             """)
 if st.session_state["begin_clicked"] and st.session_state["confirm_clicked"] and st.session_state["year_pass_clicked"] and carbon_sequestered_original > 1000:
     st.error(f"""
