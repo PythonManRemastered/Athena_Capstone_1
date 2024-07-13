@@ -19,6 +19,8 @@ if "year_pass_clicked" not in st.session_state:
     st.session_state["year_pass_clicked"] = False
 if "chapter_two_advance" not in st.session_state:
     st.session_state["chapter_two_advance"] = False
+if "tree_cut_confirm" not in st.session_state:
+    st.session_state["tree_cut_confirm"] = False
 if "money_spent" not in st.session_state:
     st.session_state["money_spent"] = 0
 if "money_made" not in st.session_state:
@@ -187,12 +189,12 @@ if st.session_state["begin_clicked"] and st.session_state["confirm_clicked"] and
     carbon_after_deforestation = (((((0.25*(tree_diameter*tree_diameter)*tree_height)*1.2)*0.725)*0.5)*3.67)* (st.session_state.tree_number - tree_number_lost)
     carbon_lost = carbon_sequestered_original - carbon_after_deforestation
     if st.button("Click me to confirm your choice"):
+        st.session_state["tree_cut_confirm"] = True
         st.write(f"We lost {tree_number_lost} trees")
         st.write(f"Because of this, about {carbon_lost} kgs of the carbon we sequestered is now back into the atmosphere")
         st.header("So that's it....right? Did we just solve the global carbon sequestration?")
         st.header("Like we have seen before, there are always more variables to take into consideration. So let's look further!")
     # next chapter advancement button 
-        
         if st.button("Click me to delve deeper!"):
             st.session_state["chapter_two_advance"] = True
 
