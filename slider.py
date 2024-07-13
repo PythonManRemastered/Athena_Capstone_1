@@ -69,7 +69,7 @@ first_year_prices = """
 - Pruning handsaw: $30
 - Pruning hand shears: $25
 - Total cost for the first year: $39
-""")
+"""
 
 country_overviews_dictionary = {
     "South Africa": "The South African Provincial area is known for heavy acts of deforestation. Though this makes our job a lot harder, we can still try!",
