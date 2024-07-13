@@ -201,17 +201,31 @@ if st.session_state["begin_clicked"] and st.session_state["confirm_clicked"] and
         st.session_state["tree_cut_confirm"] = True
         st.write(f"We lost {tree_number_lost} trees")
         st.write(f"Because of this, about {carbon_lost} kgs of the carbon we sequestered is now back into the atmosphere")
-        st.header("So that's it....right? Did we just solve the global carbon sequestration?")
-        st.header("Like we have seen before, there are always more variables to take into consideration. So let's look further!")
-    # next chapter advancement button 
+        
 if st.button("Click me to see how much this entire process costs!"):
     st.session_state["carbon_offset_cost_confirm"] = True
     
 if st.session_state["carbon_offset_cost_confirm"] and st.session_state["begin_clicked"] and st.session_state["confirm_clicked"] and st.session_state["year_pass_clicked"] and carbon_sequestered_original > 1000:
     # tree sapling (current placeholder is 'silver oak') per sapling costs about 80 rupees, and may decrease per unit cost in larger scale forestation initiatives
     st.markdown(f"Since we bought {tree_number} trees, and each sapling costs about 1.5 USD, we spent about {tree_number*1.5} USD on just buying the trees to plant them")
+    st.markdown(f"Cost breakdown for year 1
+- Cost of two apple trees: $50
+- Spray materials for several years: $45
+- Labor for planting (one hour): $20
+- Sprayer: $25
+- Labor for training in summer: $20
+- Tripod ladder, 10-foot: $130
+- Pruning lopper: $45
+- Pruning handsaw: $30
+- Pruning hand shears: $25
+- Total cost for the first year: $39")
+
 if st.button("Click me to delve deeper!") and st.session_state["tree_cut_confirm"] and st.session_state["begin_clicked"] and st.session_state["confirm_clicked"] and st.session_state["year_pass_clicked"] and carbon_sequestered_original > 1000:
         st.session_state["chapter_two_advance"] = True
+        st.header("So that's it....right? Did we just solve the global carbon sequestration?")
+        st.header("Like we have seen before, there are always more variables to take into consideration. So let's look further!")
+    
+# next chapter advancement button 
 
 if st.session_state["begin_clicked"] and st.session_state["confirm_clicked"] and st.session_state["year_pass_clicked"] and st.session_state["chapter_two_advance"] and carbon_sequestered_original > 1000:
     st.header("Chapter 2: What's next?")
