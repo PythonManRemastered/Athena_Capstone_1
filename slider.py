@@ -27,6 +27,8 @@ if "money_made" not in st.session_state:
     st.session_state["money_made"] = 0
 if "tree_number" not in st.session_state:
     st.session_state["tree_number"] = 0
+if "carbon_offset_cost_confirm" not in st.session_state:
+    st.session_state["carbon_offset_cost_confirm"] = False 
 
 # Functions to update state
 def update_money_spent(amount):
@@ -202,6 +204,12 @@ if st.session_state["begin_clicked"] and st.session_state["confirm_clicked"] and
         st.header("So that's it....right? Did we just solve the global carbon sequestration?")
         st.header("Like we have seen before, there are always more variables to take into consideration. So let's look further!")
     # next chapter advancement button 
+if st.button["Click me to see how much this entire process costs!"]:
+    st.session_state["carbon_offset_cost_confirm"] = True
+    
+if st.session_state["carbon_offset_cost_confirm"] and st.session_state["begin_clicked"] and st.session_state["confirm_clicked"] and st.session_state["year_pass_clicked"] and carbon_sequestered_original > 1000:
+    # tree sapling (current placeholder is 'silver oak') per sapling costs about 80 rupees, and may decrease per unit cost in larger scale forestation initiatives
+    st.markdown(f"Since we bought {tree_number} trees, and each sapling costs about 1.5 USD, we spent about {tree_number*1.5} USD on just buying the trees to plant them")
 if st.button("Click me to delve deeper!") and st.session_state["tree_cut_confirm"] and st.session_state["begin_clicked"] and st.session_state["confirm_clicked"] and st.session_state["year_pass_clicked"] and carbon_sequestered_original > 1000:
         st.session_state["chapter_two_advance"] = True
 
