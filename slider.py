@@ -118,8 +118,8 @@ if st.session_state["begin_clicked"]:
     st.markdown(f"Cool! Since our product is  We have made about ${cups_price*cups_amount}")
     global carbon_emitted 
     carbon_emitted = cups_amount*8
-    st.markdown(f"Unfortunately, this also means we have emitted about {8*cups_amount} of carbon!")
-
+    st.markdown(f"Unfortunately, this also means we have emitted about {8*cups_amount} of carbon! So, we now have to sequester this to become a green company")
+    
     selected_country = st.selectbox("Where do you want to establish the company?", countries)
     if st.button("Click me to confirm your choice!"):
         st.session_state["confirm_clicked"] = True
@@ -146,10 +146,11 @@ if st.session_state["begin_clicked"] and st.session_state["confirm_clicked"]:
     
     carbon_sequestered_original = (((((0.25*((tree_diameter)*(tree_diameter))*tree_height)*1.2)*0.725)*0.5)*3.67)* st.session_state.tree_number
     st.write(f"Carbon sequestered in the first year: {carbon_sequestered_original} kgs")
-    if carbon_sequestered_original > 1000:
+    
+    if carbon_sequestered_original > carbon_emitted:
         st.subheader(f"Great! You've completely sequestered your carbon emissions with {tree_number} trees.")
     else:
-        st.write(f"Not yet! We still need to sequester {1000 - int(carbon_sequestered_original)} kgs more!")
+        st.write(f"Not yet! We still need to sequester {carbon_emitted - int(carbon_sequestered_original)} kgs more!")
 
     # Simulate time passing  
     if st.button("Pass a Year"):
