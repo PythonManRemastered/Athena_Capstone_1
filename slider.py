@@ -118,7 +118,7 @@ if st.session_state["begin_clicked"]:
     st.markdown(f"Cool! Since our product is  We have made about ${cups_price*cups_amount}")
     global carbon_emitted 
     carbon_emitted = cups_amount*8
-    st.markdown(f"Unfortunately, this also means we have emitted about {8*cups_amount} of carbon! So, we now have to sequester this to become a green company")
+    st.markdown(f"Unfortunately, this also means we have emitted about {8*cups_amount}kg of carbon! So, we now have to sequester this to become a green company")
     
     selected_country = st.selectbox("Where do you want to establish the company?", countries)
     if st.button("Click me to confirm your choice!"):
