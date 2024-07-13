@@ -195,8 +195,9 @@ if st.session_state["begin_clicked"] and st.session_state["confirm_clicked"] and
         st.header("So that's it....right? Did we just solve the global carbon sequestration?")
         st.header("Like we have seen before, there are always more variables to take into consideration. So let's look further!")
     # next chapter advancement button 
-if st.button("Click me to delve deeper!") and st.session_state["begin_clicked"] and st.session_state["confirm_clicked"] and st.session_state["year_pass_clicked"] and carbon_sequestered_original > 1000:
+if st.button("Click me to delve deeper!") and st.session_state["tree_cut_confirm"] and st.session_state["begin_clicked"] and st.session_state["confirm_clicked"] and st.session_state["year_pass_clicked"] and carbon_sequestered_original > 1000:
         st.session_state["chapter_two_advance"] = True
 
 if st.session_state["begin_clicked"] and st.session_state["confirm_clicked"] and st.session_state["year_pass_clicked"] and st.session_state["chapter_two_advance"] and carbon_sequestered_original > 1000:
     st.header("Chapter 2: What's next?")
+    st.subheader("insert additional c2 data)")
