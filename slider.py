@@ -204,7 +204,7 @@ if st.session_state["begin_clicked"] and st.session_state["confirm_clicked"] and
         st.header("So that's it....right? Did we just solve the global carbon sequestration?")
         st.header("Like we have seen before, there are always more variables to take into consideration. So let's look further!")
     # next chapter advancement button 
-if st.button["Click me to see how much this entire process costs!"]:
+if st.button("Click me to see how much this entire process costs!"):
     st.session_state["carbon_offset_cost_confirm"] = True
     
 if st.session_state["carbon_offset_cost_confirm"] and st.session_state["begin_clicked"] and st.session_state["confirm_clicked"] and st.session_state["year_pass_clicked"] and carbon_sequestered_original > 1000:
