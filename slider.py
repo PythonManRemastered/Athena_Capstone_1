@@ -110,9 +110,11 @@ if st.button("Click me to begin"):
 if st.session_state["begin_clicked"]:
     st.title("Ceramic Cup Manufacturing Company Setup")
     st.markdown(company_intro)
-    global cups_amount = st.slider("Choose how many cups you want to make each day:", 0, 800)
+    global cups_amount 
+    cups_amount = st.slider("Choose how many cups you want to make each day:", 0, 800)
     st.markdown(f"Great! We have made {cups_amount} cups")
-    global cups_price = st.slider("Choose what these cups are priced at to the public: ", 0, 100)
+    global cups_price 
+    cups_price = st.slider("Choose what these cups are priced at to the public: ", 0, 100)
     st.markdown(f"Cool! Since our product is  We have made about ${cups_price*cups_amount}")
     global carbon_emitted = cups_amount*8
     st.markdown(f"Unfortunately, this also means we have emitted about {8*cups_amount} of carbon!")
