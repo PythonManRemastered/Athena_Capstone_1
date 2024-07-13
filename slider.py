@@ -57,9 +57,11 @@ company_intro = """
 - Everyday, you can only make a set number of cups, each of which need time to be fired and transported to sales
 - According to the manufacturing documents, you emitted approximately 2 kilograms of CO2 per cup, and about 8 kilograms of CO2 through the entire product development life cycle
 """
+first_year_prices_constant = 365
+# apple trees are placeholders
 first_year_prices = """
     Cost breakdown for year 1
-- Cost of two apple trees: $50
+- Cost of each tree: $25
 - Spray materials for several years: $45
 - Labor for planting (one hour): $20        
 - Sprayer: $25
@@ -68,7 +70,7 @@ first_year_prices = """
 - Pruning lopper: $45
 - Pruning handsaw: $30
 - Pruning hand shears: $25
-- Total cost for the first year: $39
+- Total cost for the first year: $365
 """
 
 country_overviews_dictionary = {
@@ -131,6 +133,8 @@ if st.session_state["begin_clicked"]:
     global cups_price 
     cups_price = st.slider("Choose what these cups are priced at to the public: ", 0, 100)
     st.markdown(f"Cool! Since our product is {cups_price} dollars per cup, we've made about {cups_price*cups_amount} dollars")
+    global money_made
+    money_made = cups_amount*cups_price
     global carbon_emitted 
     carbon_emitted = cups_amount*8
     st.markdown(f"Unfortunately, this also means we have emitted about {8*cups_amount}kg of carbon! So, we now have to sequester this to become a green company")
@@ -219,9 +223,14 @@ if st.button("Click me to see how much this entire process costs!"):
     st.session_state["carbon_offset_cost_confirm"] = True
     
 if st.session_state["carbon_offset_cost_confirm"] and st.session_state["begin_clicked"] and st.session_state["confirm_clicked"] and st.session_state["year_pass_clicked"] and carbon_sequestered_original > 1000:
-    # tree sapling (current placeholder is 'silver oak') per sapling costs about 80 rupees, and may decrease per unit cost in larger scale forestation initiatives
-    st.markdown(f"Since we bought {tree_number} trees, and each sapling costs about 1.5 USD, we spent about {tree_number*1.5} USD on just buying the trees to plant them")
+    # tree sapling (current placeholder is 'apple trees') per sapling costs about 80 rupees, and may decrease per unit cost in larger scale forestation initiatives
+    st.markdown(f"Since we bought {tree_number} trees, and each sapling costs about 25 USD, we spent about {tree_number*25} USD on just buying the trees to plant them")
+    st.markdown("We also spent some money caring for the trees, and following is the cost breakdown for each tree. Though some of these costs are shared amongst trees, for the sake of simplicity, lets assume each tree requires these costs individually")
     st.markdown(first_year_prices)
+    st.markdown(f"But remember, we made a lot of money from our cups. To be specific, we made about {money_made} USD")
+    st.markdown(f"Thus, our costs for this year can be calculated as the following:
+    st.latex(Total costs (over all our planted trees) - earnings (from our ceramic cup sales))
+    st.markdown(f"This means that our total costs for our first year were about {(tree_number*first_year_prices_constant) - money_made}
 
 if st.button("Click me to delve deeper!") and st.session_state["tree_cut_confirm"] and st.session_state["begin_clicked"] and st.session_state["confirm_clicked"] and st.session_state["year_pass_clicked"] and carbon_sequestered_original > 1000:
         st.session_state["chapter_two_advance"] = True
