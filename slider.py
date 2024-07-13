@@ -195,8 +195,7 @@ if st.session_state["begin_clicked"] and st.session_state["confirm_clicked"] and
         
         if st.button("Click me to delve deeper!"):
             st.session_state["chapter_two_advance"] = True
-            eset_everything()
+            reset_everything()
 
 if st.session_state["begin_clicked"] and st.session_state["confirm_clicked"] and st.session_state["year_pass_clicked"] and st.session_state["chapter_two_advance"] and carbon_sequestered_original > 1000:
-    reset_everything()
     st.header("Chapter 2: What's next?")
