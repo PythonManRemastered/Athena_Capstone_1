@@ -57,6 +57,19 @@ company_intro = """
 - Everyday, you can only make a set number of cups, each of which need time to be fired and transported to sales
 - According to the manufacturing documents, you emitted approximately 2 kilograms of CO2 per cup, and about 8 kilograms of CO2 through the entire product development life cycle
 """
+first_year_prices = """
+    Cost breakdown for year 1
+- Cost of two apple trees: $50
+- Spray materials for several years: $45
+- Labor for planting (one hour): $20        
+- Sprayer: $25
+- Labor for training in summer:$20
+- Tripod ladder, 10-foot: $130
+- Pruning lopper: $45
+- Pruning handsaw: $30
+- Pruning hand shears: $25
+- Total cost for the first year: $39
+""")
 
 country_overviews_dictionary = {
     "South Africa": "The South African Provincial area is known for heavy acts of deforestation. Though this makes our job a lot harder, we can still try!",
@@ -208,18 +221,7 @@ if st.button("Click me to see how much this entire process costs!"):
 if st.session_state["carbon_offset_cost_confirm"] and st.session_state["begin_clicked"] and st.session_state["confirm_clicked"] and st.session_state["year_pass_clicked"] and carbon_sequestered_original > 1000:
     # tree sapling (current placeholder is 'silver oak') per sapling costs about 80 rupees, and may decrease per unit cost in larger scale forestation initiatives
     st.markdown(f"Since we bought {tree_number} trees, and each sapling costs about 1.5 USD, we spent about {tree_number*1.5} USD on just buying the trees to plant them")
-    st.markdown("""Cost breakdown for year 1
-        - Cost of two apple trees: $50
-        - Spray materials for several years: $45
-        - Labor for planting (one hour): $20
-        - Sprayer: $25
-        - Labor for training in summer: $20
-        - Tripod ladder, 10-foot: $130
-        - Pruning lopper: $45
-        - Pruning handsaw: $30
-        - Pruning hand shears: $25
-        - Total cost for the first year: $39
-""")
+    st.markdown(first_year_prices)
 
 if st.button("Click me to delve deeper!") and st.session_state["tree_cut_confirm"] and st.session_state["begin_clicked"] and st.session_state["confirm_clicked"] and st.session_state["year_pass_clicked"] and carbon_sequestered_original > 1000:
         st.session_state["chapter_two_advance"] = True
