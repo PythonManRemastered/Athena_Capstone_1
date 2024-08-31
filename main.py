@@ -3,7 +3,7 @@ import time
 
 # List of countries and species
 countries = ["Zambia", "Zimbabwe", "South Africa", "Russia"]
-species = ["Apple", "Oak", "Yellow Birch", "Chestnut"]
+species = ["Red Maple", "Silver Maple", "Sugar Maple", "River Birch", "White Birch", "Shagbark Hickory", "Green Ash", "Black Walnut", "Black Cherry", "White Oak", "Red Oak", "Pin Oak", "Linden or Basswood", "American Elm", "Ironwood", "Cottonwood", "Dogwood", "Redbud"]
 tree_height = 1
 tree_diameter = 1
 tree_age = 1
@@ -118,6 +118,15 @@ st.markdown(project_intro)
 st.caption("Note: Remember, you can hover over any of the terms in this article to see what they mean and where they've come from")
 
 
+
+
+# THIS IS THE BEGINNING OF THE CODE LOGIC #####################################################
+
+
+
+
+
+
 # Start button to begin the application
 if st.button("Click me to begin"):
     st.session_state["begin_clicked"] = True
@@ -145,16 +154,32 @@ if st.session_state["begin_clicked"]:
         st.write(f"Perfect! Under new regulations in {selected_country}, you've been given clearance to emit up to 1000 kilograms of carbon dioxide.")
         country_overviews = country_overviews_dictionary.get(selected_country, 10)
         st.write(country_overviews)
+
+
+
 # Species selection and tree planting
 if st.session_state["begin_clicked"] and st.session_state["confirm_clicked"]:
     selected_species = st.selectbox("Choose the species of tree you want to plant:", species)
     
     tree_weights = {
-        "Oak": 41,
-        "Apple": 30,
-        "Yellow Birch": 31,
-        "Chestnut": 30
-        
+        "Red Maple": (tree_age * 0.75)/4.5,
+        "Silver Maple": (tree_age * 0.75)/3.0,
+        "Sugar Maple": (tree_age * 0.75)/5.0,
+        "River Birch": (tree_age * 0.75)/3.5,
+        "White Birch": (tree_age * 0.75)/5.0,
+        "Shagbark Hickory": (tree_age * 0.75)/7.5,
+        "Green Ash": (tree_age * 0.75)/4.0,
+        "Black Walnut": (tree_age * 0.75)/4.5,
+        "Black Cherry": (tree_age * 0.75)/5.0,
+        "White Oak": (tree_age * 0.75)/5.0,
+        "Red Oak": (tree_age * 0.75)/4.0,
+        "Pin Oak": (tree_age * 0.75)/3.0,
+        "Linden or Basswood": (tree_age * 0.75)/3.0,
+        "American Elm": (tree_age * 0.75)/4.0,
+        "Ironwood": (tree_age * 0.75)/7.0,
+        "Cottonwood": (tree_age * 0.75)/2.0,
+        "Dogwood": (tree_age * 0.75)/7.0,
+        "Redbud": (tree_age * 0.75)/7.0           
     }
     # .get prevents key issues, 30 is the default value for non-recognizable species
     tree_weight = tree_weights.get(selected_species, 30)
