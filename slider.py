@@ -154,6 +154,7 @@ if st.session_state["begin_clicked"] and st.session_state["confirm_clicked"]:
         "Apple": 30,
         "Yellow Birch": 31,
         "Chestnut": 30
+        
     }
     # .get prevents key issues, 30 is the default value for non-recognizable species
     tree_weight = tree_weights.get(selected_species, 30)
