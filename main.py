@@ -182,11 +182,13 @@ if st.session_state["begin_clicked"] and st.session_state["confirm_clicked"]:
         "Redbud": (tree_age * 0.75)/7.0           
     }
     # .get prevents key issues, 30 is the default value for non-recognizable species
-    tree_weight = tree_weights.get(selected_species, 30)
+    tree_diameter = tree_weights.get(selected_species, 30)
     
     tree_number = st.slider("Choose how many trees you want to plant", 0, 20000)
     update_tree_number(tree_number)
+
     
+    st.write(f"Since you chose {selected_species}, each tree has a diameter, at breast height, of approximately {tree_tree_diameter}")
     st.write(f"You chose to plant {tree_number} {selected_species} trees. Each tree weighs approximately {tree_weight} kgs")
     
     carbon_sequestered_original = (((((0.25*((tree_diameter)*(tree_diameter))*tree_height)*1.2)*0.725)*0.5)*3.67)* st.session_state.tree_number
@@ -215,7 +217,7 @@ if st.session_state["begin_clicked"] and st.session_state["confirm_clicked"]:
             tree_age += 1
             st.write(f"Now that {tree_age-1} year(s) have passed, is there any difference in the amount of carbon sequestered?")     
             st.write(f"Last year, you chose to plant {st.session_state.tree_number} {selected_species} trees.")
-            tree_diameter += 1
+            tree_diameter += tree_age*(tree_diameter*(1/(tree_age*0.75)))
             tree_height += 1
             st.write("The tree diameter is ", tree_diameter)
             st.write("The tree height is ", tree_height)
