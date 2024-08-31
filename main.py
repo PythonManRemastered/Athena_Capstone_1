@@ -189,7 +189,7 @@ if st.session_state["begin_clicked"] and st.session_state["confirm_clicked"]:
 
     
     st.write(f"Since you chose {selected_species}, each tree has a diameter, at breast height, of approximately {tree_diameter}")
-    st.write(f"You chose to plant {tree_number} {selected_species} trees. Each tree weighs approximately {tree_weight} kgs")
+    st.write(f"You chose to plant {tree_number} {selected_species} trees.")
     
     carbon_sequestered_original = (((((0.25*((tree_diameter)*(tree_diameter))*tree_height)*1.2)*0.725)*0.5)*3.67)* st.session_state.tree_number
     st.write(f"Carbon sequestered in the first year: {carbon_sequestered_original} kgs")
