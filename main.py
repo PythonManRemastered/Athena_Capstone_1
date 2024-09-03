@@ -186,7 +186,7 @@ if st.session_state["begin_clicked"] and st.session_state["confirm_clicked"]:
     # .get prevents key issues, 30 is the default value for non-recognizable species
     tree_diameter = tree_weights.get(selected_species, 30)
     
-    tree_number = st.slider("Choose how many trees you want to plant", 0, 20000)
+    tree_number = st.slider("Choose how many trees you want to plant", 0, 2000000)
     update_tree_number(tree_number)
 
     
