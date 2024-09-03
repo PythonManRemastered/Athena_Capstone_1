@@ -80,6 +80,8 @@ country_overviews_dictionary = {
     "Russia": "Due to the current conflict in the Russian peninsula, co-ordinating forestation politically may prove to be a problem. Doesn't matter: Let's try!"
 
 }
+
+
 # Display header with updated money spent
 def display_header_spent():
     st.markdown(f"""
