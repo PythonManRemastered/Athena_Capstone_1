@@ -39,7 +39,7 @@ if st.session_state.content_visible:
     st.markdown(fade_effect.format(show_class=show_class), unsafe_allow_html=True)
     
 else:
-    return ""
+    print ""
 
 
 
