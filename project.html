@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article</title>
+    <style>
+        body {
+            background-color: rgb(213, 195, 172);
+        }
+
+        h1 {
+            text-align: center;
+        }
+        img {
+            width: 50px;
+            height: auto;
+            margin: 10px;
+        }
+        .center-box {
+            width: 300px;
+            height: 200px;
+            background-color: #ffffff;
+            border: 2px solid #333;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin: 500px auto;
+        }
+        .center-img {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .centered-list {
+            display: flex;
+            flex-direction: column; /* Stack items vertically */
+            align-items: center; /* Center items horizontally */
+            list-style-position: inside; /* Keep bullets inside */
+            padding-left: 0;
+        }
+        p, ul, li {
+            margin: 1000 40px;
+            padding-bottom: 1%; 
+            text-align: center;
+        }
+        .fade {
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+            margin: 50px;
+            padding: 20px;
+            background: #ffffff;
+            border: 1px solid #ffffff;
+            text-align: center;
+        }
+        .spacer {
+            height: 50vh; /* Space to create scrolling */
+        }
+        .little_spacer {
+            height: 25vh;
+        }
+        .discriminator {
+            border: rgb(213, 195, 172);
+            background: rgb(213, 195, 172);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="spacer"></div>
+
+    <div class="fade discriminator"> To save, To sequester</div>
+
+    <div class="spacer"></div>
+
+    <div class="center-img fade discriminator">
+        <img src="https://www.dummies.com/wp-content/uploads/246517.image0.jpg" alt="Carbon Emissions Image">
+    </div>
+
+    <div class="spacer"></div>
+
+    <div class="fade discriminator">
+        Notice how they never mention how the environment is affected through their carbon emissions? Here's what their carbon emissions look like:
+    </div>
+
+    <div class="centered-list fade discriminator"> 
+        <li>20094 hgo/co3</li>
+        <li>9484 hmo/co2</li>
+    </div>
+
+    <div class="spacer"></div>
+
+    <div class="fade discriminator"> 
+        Let's learn a little more about this company:
+    </div>
+
+    <div class="center-box fade discriminator">
+        Info report
+    </div>
+
+    <div class="spacer"></div>
+
+    <div class="fade discriminator"> 
+        <li> Turns out, I've pulled some strings and we now technically own this company! </li>
+        <li> Good news: We can change the output however we like </li>
+        <li> Bad news: We now have the responsibility of reducing the horrific Co2 emissions of this company </li>
+    </div>
+
+    <div class="spacer"></div>
+
+    <div class="fade discriminator"> 
+        So let's begin - Use this slider to change the number of cups we make this year!
+        <div>
+            <input type="range" id="mySlider" min="0" max="100" value="50">
+            <div id="sliderValue">Value: <span id="valueDisplay">50</span></div>
+            <div id="imageContainer"></div>   
+        </div>
+    </div>
+
+    <div class="little_spacer"></div>
+
+    <div class="fade discriminator">
+        Here's how much CO2 we will produce during our production:
+        At 1.22 kg of CO2 per piece as an average,
+        <div> 
+            <div id="carbon"> CO2 emitted: <span id="co2Display">61.00</span> kg</div> <!-- Updated ID for CO2 display -->
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <!-- scrolling/fading animation -->
+    <script>
+        document.addEventListener('scroll', () => {
+            const fadeElements = document.querySelectorAll('.fade');
+            const viewportHeight = window.innerHeight;
+
+            fadeElements.forEach(el => {
+                const elementTop = el.getBoundingClientRect().top;
+
+                if (elementTop < viewportHeight) {
+                    el.style.opacity = 1;
+                } else {
+                    el.style.opacity = 0;
+                }
+            });
+        });
+
+    </script>
+
+    <!-- slider values --> 
+    <script>
+        const slider = document.getElementById('mySlider');
+        const sliderValue = document.getElementById('sliderValue');
+        const valueDisplay = document.getElementById('valueDisplay');
+        const imageContainer = document.getElementById('imageContainer');
+        const co2Display = document.getElementById('co2Display'); // Get the CO2 display element
+
+        // Function to display images based on the slider value
+        function displayImages() {
+            // Clear the current images
+            imageContainer.innerHTML = '';
+
+            // Create and display images based on the slider value
+            for (let i = 0; i < slider.value; i++) {
+                const img = document.createElement('img');
+                img.src = 'https://thumbs.dreamstime.com/b/pink-cup-coffee-glass-doodle-art-drawing-vector-illustration-icon-pink-cup-coffee-glass-doodle-art-drawing-vector-illustration-314380700.jpg';
+                img.alt = 'Pink Coffee Cup';
+                imageContainer.appendChild(img);
+            }
+        }
+
+        // Update the displayed value, CO2 emission, and images when the slider changes
+        slider.addEventListener('input', function() {
+            valueDisplay.textContent = this.value; // Display the current value
+            const emittedCO2 = (this.value * 1.22).toFixed(2); // Calculate CO2 emission
+            co2Display.textContent = emittedCO2; // Display the calculated CO2
+            displayImages(); // Call displayImages to update the cups displayed
+        });
+
+        // Initial call to display images and CO2 emissions
+        displayImages();
+        const initialCO2 = (slider.value * 1.22).toFixed(2);
+        co2Display.textContent = initialCO2; // Display initial CO2 emission
+    </script>
+</body>
+</html>
+
+
+
